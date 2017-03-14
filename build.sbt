@@ -17,7 +17,5 @@ libraryDependencies ++= Seq(
 
   "com.google.inject.extensions"        %     "guice-multibindings"   %     "4.0",
 
-  "org.postgresql"                      %     "postgresql"            %     "9.4-1206-jdbc42",
-
-  "com.typesafe.akka"                   %%    "akka-http"             %     "10.0.4"
+  "org.postgresql"                      %     "postgresql"            %     "9.4-1206-jdbc42"
 )
