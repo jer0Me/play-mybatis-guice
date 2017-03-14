@@ -1,6 +1,6 @@
 package services;
 
-import daos.UsersDao;
+import models.daos.UsersDao;
 import models.pojos.TmUser;
 
 import javax.inject.Inject;

@@ -1,8 +1,7 @@
-package modules;
-
+package configurations;
 
 import com.google.inject.name.Names;
-import daos.UsersDao;
+import models.daos.UsersDao;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import play.db.Database;
 
@@ -12,7 +11,6 @@ import javax.inject.Singleton;
 import javax.sql.DataSource;
 
 public class MyBatisModule extends org.mybatis.guice.MyBatisModule {
-
 
     @Override
     protected void initialize() {
@@ -32,6 +30,7 @@ public class MyBatisModule extends org.mybatis.guice.MyBatisModule {
     /* Provides a {@link DataSource} from the {@link Database} which can be injected from Play. */
     @Singleton
     public static class PlayDataSourceProvider implements Provider<DataSource> {
+
         final Database db;
 
         @Inject
