@@ -3,4 +3,3 @@
 # ~~~~
 
 GET        /users                   controllers.UsersController.getUsers()
-GET        /usersFromFile           controllers.UsersController.getUsersFromFile()

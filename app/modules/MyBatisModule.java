@@ -3,8 +3,6 @@ package modules;
 
 import com.google.inject.name.Names;
 import daos.UsersDao;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionManager;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import play.db.Database;
 

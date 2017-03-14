@@ -7,14 +7,7 @@
     <select id="getUsers" flushCache="true" resultType="TmUser">
 
         SELECT *
-        FROM tm_user
-
-    </select>
-
-    <select id="getUsersMap" flushCache="true" resultType="hashmap">
-
-        SELECT *
-        FROM tm_user
+        FROM ex01_schema.tm_user
 
     </select>
 

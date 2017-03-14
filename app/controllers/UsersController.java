@@ -7,19 +7,13 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import services.UsersService;
-import utils.JsonCollector;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 
 public class UsersController extends Controller {
 
     @Inject
     UsersService usersService;
-
 
     public Result getUsers() {
 
@@ -27,49 +21,23 @@ public class UsersController extends Controller {
 
                 usersService.getUsers()
 
-        ).map(
+        ).fold(ByteString.fromString(""),
 
-                tmUser -> ByteString.fromString(
+                (currentUserJson, nextUserJson) -> currentUserJson.isEmpty() ?
 
-                        Json.toJson(tmUser).toString()
+                        ByteString.fromString(Json.toJson(nextUserJson).toString()) :
 
-                )
+                        currentUserJson.concat(
+
+                                ByteString.fromString(", " + Json.toJson(nextUserJson).toString())
+                        )
+
+        ).intersperse(
+
+                ByteString.fromString("["), ByteString.fromString(""), ByteString.fromString("]")
         );
 
         return ok().chunked(users);
     }
 
-    /**public Result getUsersMap() {
-        List<String> list = new ArrayList<>();
-
-        Source<ByteString, NotUsed> users = Source.from(
-
-                usersService.getUsersMap()
-
-        ).map(
-
-                userMap ->
-
-                        "{" + "\"id\":" + "\"" + userMap.get("id") + "\"" + "," +
-                                "\"name\":" + "\"" + userMap.get("name") + "\"" + "," +
-                                "\"age\":" + "\"" + userMap.get("age") + "\"" + "," +
-                                "\"address\":" + "\"" + userMap.get("address") + "\"" +
-                         "}"
-
-        );
-
-        return ok().chunked(users);
-    }**/
-
-    public CompletionStage<Result> getUsersFromFile() {
-
-        return CompletableFuture.supplyAsync(() ->
-
-                usersService.getUsersFromFile()
-
-        ).thenApply(
-
-                file -> ok(file).as("application/json")
-        );
-    }
 }

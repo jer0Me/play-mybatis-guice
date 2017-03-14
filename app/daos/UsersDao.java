@@ -1,17 +1,14 @@
 package daos;
 
 import models.pojos.TmUser;
-import org.apache.ibatis.session.ResultHandler;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.HashMap;
 import java.util.List;
 
-public interface UsersDao  {
+public interface UsersDao {
 
+    @Select("SELECT * FROM ex01_schema.tm_user")
     public List<TmUser> getUsers();
-
-    public List<TmUser> getUsers(UserResultHandler userResultHandler);
-
-    public List<HashMap<String, String>> getUsersMap();
 
 }

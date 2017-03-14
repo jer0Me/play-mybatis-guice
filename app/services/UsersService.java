@@ -12,18 +12,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class UsersService {
 
-
-    @Inject
-    private UsersDao usersDao;
-
     @Inject
     SqlSessionFactory sqlSessionFactory;
+    @Inject
+    private UsersDao usersDao;
 
     public List<TmUser> getUsers() {
 
