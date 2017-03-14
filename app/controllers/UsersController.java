@@ -13,7 +13,7 @@ import javax.inject.Inject;
 public class UsersController extends Controller {
 
     @Inject
-    UsersService usersService;
+    private UsersService usersService;
 
     public Result getUsers() {
 
