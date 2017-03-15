@@ -43,7 +43,7 @@ public class UsersController extends Controller {
         ).intersperse(
 
                 //Close the concatenation with parentheses to indicate an array of json
-                ByteString.fromString("["), ByteString.fromString(""), ByteString.fromString("]")
+                ByteString.fromString("["), ByteString.empty(), ByteString.fromString("]")
         );
 
         return ok().chunked(users);
