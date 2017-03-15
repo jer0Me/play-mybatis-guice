@@ -25,17 +25,24 @@ public class UsersController extends Controller {
 
         ).fold(ByteString.fromString(""),
 
-                (currentUserJson, nextUserJson) -> currentUserJson.isEmpty() ?
+                (userByteStringJsonConcatenation, nextUser) -> userByteStringJsonConcatenation.isEmpty() ?
 
-                        ByteString.fromString(Json.toJson(nextUserJson).toString()) :
+                        //First user json
+                        ByteString.fromString(
 
-                        currentUserJson.concat(
+                                Json.toJson(nextUser).toString()
 
-                                ByteString.fromString(", " + Json.toJson(nextUserJson).toString())
+                        ) :
+
+                        userByteStringJsonConcatenation.concat(
+
+                                //Every concatenation has to be separated by comma
+                                ByteString.fromString(", " + Json.toJson(nextUser).toString())
                         )
 
         ).intersperse(
 
+                //Close the concatenation with parentheses to indicate an array of json
                 ByteString.fromString("["), ByteString.fromString(""), ByteString.fromString("]")
         );
 
