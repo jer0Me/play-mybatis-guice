@@ -4,9 +4,9 @@
 
 <mapper namespace="models.daos.UsersDao">
 
-    <select id="getUsers" flushCache="true" resultType="models.pojos.TmUser">
+    <select id="getUsers" flushCache="true" resultType="models.dtos.UserDto">
 
-        SELECT *
+        SELECT id, name, age, address
         FROM ex01_schema.tm_user
 
     </select>

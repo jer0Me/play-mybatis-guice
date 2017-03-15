@@ -1,13 +1,11 @@
 package models.daos;
 
-import models.pojos.TmUser;
-import org.apache.ibatis.annotations.Select;
+import models.dtos.UserDto;
 
-import java.util.HashMap;
 import java.util.List;
 
 public interface UsersDao {
 
-    public List<TmUser> getUsers();
+    public List<UserDto> getUsers();
 
 }
