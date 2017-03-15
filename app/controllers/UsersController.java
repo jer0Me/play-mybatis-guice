@@ -3,6 +3,7 @@ package controllers;
 import akka.NotUsed;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
+import org.mybatis.guice.transactional.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -15,6 +16,7 @@ public class UsersController extends Controller {
     @Inject
     private UsersService usersService;
 
+    @Transactional
     public Result getUsers() {
 
         Source<ByteString, NotUsed> users = Source.from(

@@ -38,4 +38,6 @@
     <appender-ref ref="ASYNCSTDOUT" />
   </root>
 
+  <logger name="models.daos.UsersDao" level="DEBUG" />
+
 </configuration>

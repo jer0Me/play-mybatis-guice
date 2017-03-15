@@ -2,9 +2,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="daos.UsersDao">
+<mapper namespace="models.daos.UsersDao">
 
-    <select id="getUsers" flushCache="true" resultType="TmUser">
+    <select id="getUsers" flushCache="true" resultType="models.pojos.TmUser">
 
         SELECT *
         FROM ex01_schema.tm_user
