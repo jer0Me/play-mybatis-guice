@@ -23,7 +23,7 @@ public class UsersController extends Controller {
 
                 usersService.getUsers()
 
-        ).fold(ByteString.fromString(""),
+        ).fold(ByteString.empty(),
 
                 (userByteStringJsonConcatenation, nextUser) -> userByteStringJsonConcatenation.isEmpty() ?
 
