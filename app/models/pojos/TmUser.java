@@ -1,8 +1,6 @@
 package models.pojos;
 
-import java.io.Serializable;
-
-public class TmUser implements Serializable {
+public class TmUser {
 
     private Integer id;
     private String name;
